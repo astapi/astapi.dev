@@ -2,12 +2,11 @@
   <section class="container">
     <div>
       <logo />
-      <h1 class="title">
-        astapi.dev
-      </h1>
-      <h2 class="subtitle">
-        My first-rate Nuxt.js project
-      </h2>
+      <h1 class="title">astapi.dev</h1>
+      <h2 class="subtitle">My first-rate Nuxt.js project</h2>
+      <no-ssr>
+        <div>{{ hogemaru }}</div>
+      </no-ssr>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green"
           >Documentation</a
@@ -23,15 +22,22 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    Logo: () => import('~/components/Logo.vue')
-  }
+    Logo: () => import('@/components/Logo.vue')
+  },
+  async asyncData() {}
 })
-export default class Hoge extends Vue {}
+export default class Index extends Vue {
+  hogemaru: string = 'ほげほげほげほげ'
+
+  mounted(): void {
+    this.hogemaru = 'うおおおおおおおーほげほげほげ'
+  }
+}
 </script>
 
 <style>

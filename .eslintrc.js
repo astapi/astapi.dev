@@ -6,7 +6,9 @@ module.exports = {
   },
   parserOptions: {
     // parser: 'babel-eslint'
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
+    sourceType: "module",
+    project: "./tsconfig.json"
   },
   extends: [
     '@nuxtjs',
@@ -16,11 +18,12 @@ module.exports = {
     'prettier/vue'
   ],
   plugins: [
-    // 'prettier'
+    'prettier',
     '@typescript-eslint'
   ],
   // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off'
+    'nuxt/no-cjs-in-config': 'off',
+    'no-console': 'off'
   }
 }
