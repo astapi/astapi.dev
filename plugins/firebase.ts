@@ -21,6 +21,7 @@ const functions = firebase.app().functions('asia-northeast1');
 if (process.env.FIREBASE_LOG_LEVEL) {
   firebase.firestore.setLogLevel(process.env.FIREBASE_LOG_LEVEL as firebase.firestore.LogLevel);
 }
+console.log('ここっていつ通るの？')
 export { firebase, functions };
 
 // declare module 'vue/types/vue' {
