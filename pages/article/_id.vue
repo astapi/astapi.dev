@@ -46,28 +46,33 @@ interface Article {
     console.log(context.params)
     console.log('なんでや')
     console.log(firebase)
-    console.log(firebase.firestore())
-    console.log(firebase.firestore().collection('articles'))
-    console.log(
-      firebase
-        .firestore()
-        .collection('articles')
-        .doc(context.params.id)
-    )
-    console.log(
-      firebase
-        .firestore()
-        .collection('articles')
-        .doc(context.params.id)
-        .get()
-    )
-    console.log(
-      await firebase
-        .firestore()
-        .collection('articles')
-        .doc(context.params.id)
-        .get()
-    )
+    try {
+      console.log(firebase.firestore())
+      console.log(firebase.firestore().collection('articles'))
+      console.log(
+        firebase
+          .firestore()
+          .collection('articles')
+          .doc(context.params.id)
+      )
+      console.log(
+        firebase
+          .firestore()
+          .collection('articles')
+          .doc(context.params.id)
+          .get()
+      )
+      console.log(
+        await firebase
+          .firestore()
+          .collection('articles')
+          .doc(context.params.id)
+          .get()
+      )
+    } catch (e) {
+      console.log('error')
+      console.log(e)
+    }
     const doc = await firebase
       .firestore()
       .collection('articles')
