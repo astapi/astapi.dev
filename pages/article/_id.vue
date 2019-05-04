@@ -43,6 +43,7 @@ interface Article {
   async asyncData(context: any) {
     console.log('来るよね')
     console.log(context.params)
+    console.log('なんでや')
     const doc = await firebase
       .firestore()
       .collection('articles')
