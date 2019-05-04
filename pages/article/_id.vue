@@ -48,9 +48,13 @@ interface Article {
       .collection('articles')
       .doc(context.params.id)
       .get()
+    console.log(doc)
+    console.log(doc.exists)
     if (!doc.exists) {
+      console.log('みつからないらしい！')
       return context.error({ statusCode: 404, message: 'Not Found' })
     }
+    console.log('みつかっている？！')
     const data = doc.data()!
     const article = {
       id: doc.id,
