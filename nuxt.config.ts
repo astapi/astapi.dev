@@ -1,8 +1,8 @@
 import NuxtConfiguration from '@nuxt/config'
 const pkg = require('./package')
+require('dotenv').config()
 
 const config: NuxtConfiguration = {
-  // Type or Press `Ctrl + Space` for autocompletion
   mode: 'universal',
 
   /*
@@ -26,15 +26,20 @@ const config: NuxtConfiguration = {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: [
+    'element-ui/lib/theme-chalk/index.css',
+    'bulma/bulma.sass'
+  ],
 
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
+    '@/plugins/firebase.ts',
     {
       src: '@/plugins/element-ui',
-      ssr: false
+      // ssr: false
+      ssr: true
     }
   ],
 
@@ -43,13 +48,19 @@ const config: NuxtConfiguration = {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    ['@nuxtjs/dotenv', { systemvars: true }]
   ],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  // adminページの認証用
+  router: {
+    middleware: 'auth'
   },
 
   /*

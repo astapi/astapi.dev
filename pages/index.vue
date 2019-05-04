@@ -1,74 +1,67 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">astapi.dev</h1>
-      <h2 class="subtitle">My first-rate Nuxt.js project</h2>
-      <no-ssr>
-        <div>{{ hogemaru }}</div>
-      </no-ssr>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green"
-          >Documentation</a
-        >
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-          >GitHub</a
-        >
+  <div>
+    <GrobalHeader></GrobalHeader>
+
+    <section class="section">
+      <div class="container">
+        <section class="articles">
+          <div class="column is-8 is-offset-2">
+            <ArticleList :article-list="list"></ArticleList>
+          </div>
+        </section>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import { format } from 'date-fns'
+
+interface Article {
+  id: string
+  articleTitle: string
+  contentHtml: string
+  contentJson: string
+  createdAt: Date
+  updatedAt: Date
+}
 
 @Component({
   components: {
-    Logo: () => import('@/components/Logo.vue')
+    GrobalHeader: () => import('@/components/GlobalHeader.vue'),
+    ArticleList: () => import('@/components/ArticleList.vue')
   },
-  async asyncData() {}
+
+  filters: {
+    formatDate(date): string {
+      return format(date, 'YYYY/MM/DD hh:mm:ss')
+    }
+  },
+
+  async asyncData() {
+    const q = await firebase
+      .firestore()
+      .collection('articles')
+      .get()
+    const list = q.docs.map(doc => {
+      const data = doc.data()
+      return {
+        id: doc.id,
+        articleTitle: data.articleTitle,
+        contentHtml: data.contentHtml,
+        createdAt: data.createdAt.toDate(),
+        updatedAt: data.updatedAt.toDate()
+      } as Article
+    })
+    return { list }
+  }
 })
 export default class Index extends Vue {
-  hogemaru: string = 'ほげほげほげほげ'
+  list: Article[] = []
 
-  mounted(): void {
-    this.hogemaru = 'うおおおおおおおーほげほげほげ'
-  }
+  mounted(): void {}
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
