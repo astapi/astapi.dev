@@ -44,6 +44,7 @@ interface Article {
     console.log('来るよね')
     console.log(context.params)
     console.log('なんでや')
+    console.log(firebase)
     const doc = await firebase
       .firestore()
       .collection('articles')
@@ -53,7 +54,8 @@ interface Article {
     console.log(doc.exists)
     if (!doc.exists) {
       console.log('みつからないらしい！')
-      return context.error({ statusCode: 404, message: 'Not Found' })
+      context.error({ statusCode: 404, message: 'Not Found' })
+      return
     }
     console.log('みつかっている？！')
     const data = doc.data()!
