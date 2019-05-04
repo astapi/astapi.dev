@@ -41,6 +41,8 @@ interface Article {
   },
 
   async asyncData(context: any) {
+    console.log('来るよね')
+    console.log(context.params)
     const doc = await firebase
       .firestore()
       .collection('articles')

@@ -42,6 +42,7 @@ interface Article {
   },
 
   async asyncData() {
+    console.log('来るよね')
     const q = await firebase
       .firestore()
       .collection('articles')
