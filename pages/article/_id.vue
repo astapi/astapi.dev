@@ -15,8 +15,9 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+// import firebase from 'firebase/app'
+// import 'firebase/firestore'
+import { firebase } from '@/plugins/firebase'
 import { format } from 'date-fns'
 
 interface Article {
