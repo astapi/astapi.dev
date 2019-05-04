@@ -79,7 +79,9 @@ export default class Index extends Vue {
     updatedAt: new Date()
   }
 
-  mounted(): void {}
+  mounted(): void {
+    console.log(this.article)
+  }
 }
 </script>
 
