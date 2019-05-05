@@ -17,6 +17,7 @@ const config = {
 
 if (!firebase.apps.length) {
   console.log('initialize firebase')
+  console.log(config)
   firebase.initializeApp(config);
 }
 //const functions = firebase.app().functions('asia-northeast1');
