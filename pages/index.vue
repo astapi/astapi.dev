@@ -24,14 +24,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import 'firebase/firestore'
 import { format } from 'date-fns'
-
-interface Article {
-  id: string
-  articleTitle: string
-  contentHtml: string
-  createdAt: Date
-  updatedAt: Date
-}
+import { Article } from '@/store/articles'
 
 @Component({
   components: {

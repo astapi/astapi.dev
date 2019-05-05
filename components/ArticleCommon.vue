@@ -24,15 +24,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { format } from 'date-fns'
-
-interface Article {
-  id: string
-  articleTitle: string
-  contentHtml: string
-  contentJson: string
-  createdAt: Date
-  updatedAt: Date
-}
+import { Article } from '@/store/articles'
 
 @Component({
   filters: {

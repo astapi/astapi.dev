@@ -7,15 +7,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-
-interface Article {
-  id: string
-  articleTitle: string
-  contentHtml: string
-  contentJson: string
-  createdAt: Date
-  updatedAt: Date
-}
+import { Article } from '@/store/articles'
 
 @Component({
   components: {
