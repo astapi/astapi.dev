@@ -10,20 +10,18 @@ import 'firebase/firestore';
 //  firebase.firestore.setLogLevel(process.env.FIREBASE_LOG_LEVEL as firebase.firestore.LogLevel);
 //}
 // export { firebase, functions };
+const config = {
+  apiKey: process.env.NUXT_ENV_FIREBASE_API_KEY,
+  authDomain: process.env.NUXT_ENV_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.NUXT_ENV_FIREBASE_DATABASE_URL,
+  projectId: process.env.NUXT_ENV_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NUXT_ENV_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NUXT_ENV_FIREBASE_MESSAGE_SENDER_ID,
+};
 
 export default (_1, inject) => {
-  const config = {
-    apiKey: process.env.NUXT_ENV_FIREBASE_API_KEY,
-    authDomain: process.env.NUXT_ENV_FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.NUXT_ENV_FIREBASE_DATABASE_URL,
-    projectId: process.env.NUXT_ENV_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NUXT_ENV_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NUXT_ENV_FIREBASE_MESSAGE_SENDER_ID,
-  };
-
   if (!firebase.apps.length) {
     console.log('initialize firebase')
-    console.log(config)
     firebase.initializeApp(config);
   }
   inject('firebase', firebase)
