@@ -27,7 +27,7 @@ export default class ArticleNew extends Vue {
   editor: any = null
   articleTitle: string = ''
 
-  mounted(): Promise<void> {}
+  mounted(): void {}
 
   async save(): Promise<void> {
     if (this.articleTitle === '') {

@@ -14,6 +14,12 @@
   </div>
 </template>
 
+<style>
+.section .card {
+  margin-bottom: 50px;
+}
+</style>
+
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import 'firebase/firestore'
@@ -23,7 +29,6 @@ interface Article {
   id: string
   articleTitle: string
   contentHtml: string
-  contentJson: string
   createdAt: Date
   updatedAt: Date
 }
@@ -41,6 +46,12 @@ interface Article {
   },
 
   async asyncData(context: any) {
+    // storeに入っていたらそれを返す
+    const storeArticleList = context.store.getters['articles/getList']
+    if (storeArticleList.length !== 0) {
+      return { list: storeArticleList }
+    }
+
     const firestore = context.app.$firestore
     const q = await firestore.collection('articles').get()
     const list = q.docs.map(doc => {
@@ -53,6 +64,9 @@ interface Article {
         updatedAt: data.updatedAt.toDate()
       } as Article
     })
+
+    // 取得した記事一覧をstoreに入れて使い回す
+    context.store.commit('articles/setList', list)
     return { list }
   }
 })

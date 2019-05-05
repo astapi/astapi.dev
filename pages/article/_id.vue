@@ -22,7 +22,6 @@ interface Article {
   id: string
   articleTitle: string
   contentHtml: string
-  contentJson: string
   createdAt: Date
   updatedAt: Date
 }
@@ -40,6 +39,14 @@ interface Article {
   },
 
   async asyncData(context: any) {
+    // storeに入っていたらそれを返す
+    const storeArticle = context.store.getters['articles/getArticle'](
+      context.params.id
+    )
+    if (storeArticle) {
+      return { article: storeArticle }
+    }
+
     const firestore = context.app.$firestore
     const doc = await firestore
       .collection('articles')
@@ -65,7 +72,6 @@ export default class Index extends Vue {
     id: '1',
     articleTitle: '',
     contentHtml: '',
-    contentJson: '',
     createdAt: new Date(),
     updatedAt: new Date()
   }
