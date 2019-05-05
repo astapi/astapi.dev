@@ -1,9 +1,10 @@
 import Vue from 'vue'
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
-import 'firebase/storage';
-import 'firebase/functions';
+// TODO 使うときになったら使用する場所でimportする
+// import 'firebase/auth';
+// import 'firebase/storage';
+// import 'firebase/functions';
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -15,21 +16,23 @@ const config = {
 };
 
 if (!firebase.apps.length) {
+  console.log('initialize firebase')
   firebase.initializeApp(config);
 }
-const functions = firebase.app().functions('asia-northeast1');
-if (process.env.FIREBASE_LOG_LEVEL) {
-  firebase.firestore.setLogLevel(process.env.FIREBASE_LOG_LEVEL as firebase.firestore.LogLevel);
-}
-console.log('ここっていつ通るの？')
-export { firebase, functions };
+//const functions = firebase.app().functions('asia-northeast1');
+//if (process.env.FIREBASE_LOG_LEVEL) {
+//  firebase.firestore.setLogLevel(process.env.FIREBASE_LOG_LEVEL as firebase.firestore.LogLevel);
+//}
+// export { firebase, functions };
 
-// declare module 'vue/types/vue' {
-//   interface Vue {
-//     $functions: firebase.functions.Functions
-//   }
-// }
-// export default () => {
-//   Vue.prototype.$functions = functions
-// }
-//
+export default (_1, inject) => {
+  inject('firebase', firebase)
+  inject('firestore', firebase.firestore())
+}
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $firebase: firebase.app.App
+    $firestore: firebase.firestore.Firestore
+  }
+}

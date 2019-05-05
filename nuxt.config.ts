@@ -35,7 +35,7 @@ const config: NuxtConfiguration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '@/plugins/firebase.ts', ssr: true },
+    '@/plugins/firebase.ts',
     {
       src: '@/plugins/element-ui',
       // ssr: false
@@ -62,6 +62,11 @@ const config: NuxtConfiguration = {
   router: {
     middleware: 'auth'
   },
+
+  serverMiddleware: [
+    // SSR 時に cookie から ログイン状態をチェックする
+    '@/serverMiddleware/validateFirebaseIdToken'
+  ],
 
   /*
    ** Build configuration

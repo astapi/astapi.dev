@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import firebase from 'firebase/app'
 import 'firebase/auth'
+import Cookies from 'js-cookie'
 
 @Component
 export default class Login extends Vue {
@@ -29,18 +29,31 @@ export default class Login extends Vue {
   login(): void {
     const email = this.form.email
     const password = this.form.password
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((credential: firebase.auth.UserCredential) => {
-        this.$store.commit('SET_USER', credential)
-        this.$router.push('/admin')
-      })
-      .catch(error => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(`${errorCode} : ${errorMessage}`)
-      })
+    try {
+      this.$firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((credential: firebase.auth.UserCredential) => {
+          console.log('login!')
+          this.$store.commit('SET_USER', credential)
+
+          // SSR 認証用の cookie をセットする
+          this.$firebase
+            .auth()
+            .currentUser!.getIdToken(true)
+            .then(idToken => {
+              Cookies.set('__session', idToken, { expires: 7 })
+            })
+          this.$router.push('/admin')
+        })
+        .catch(error => {
+          const errorCode = error.code
+          const errorMessage = error.message
+          console.log(`${errorCode} : ${errorMessage}`)
+        })
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 </script>

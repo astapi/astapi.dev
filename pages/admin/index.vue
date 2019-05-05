@@ -14,9 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import firebase from 'firebase/app'
 import 'firebase/firestore'
-import auth from '@/plugins/auth'
 
 interface Article {
   id: string
@@ -30,13 +28,7 @@ export default class Index extends Vue {
   list: Article[] = []
 
   async mounted(): Promise<void> {
-    const user = await auth()
-    if (!user) this.$router.push('/')
-
-    const q = await firebase
-      .firestore()
-      .collection('articles')
-      .get()
+    const q = await this.$firestore.collection('articles').get()
     this.list = q.docs.map(doc => {
       const data = doc.data()
       return {

@@ -15,9 +15,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-// import firebase from 'firebase/app'
-// import 'firebase/firestore'
-import { firebase } from '@/plugins/firebase'
+import 'firebase/firestore'
 import { format } from 'date-fns'
 
 interface Article {
@@ -42,50 +40,15 @@ interface Article {
   },
 
   async asyncData(context: any) {
-    console.log('来るよね')
-    console.log(context.params)
-    console.log('なんでや')
-    console.log(firebase)
-    try {
-      console.log(firebase.firestore())
-      console.log(firebase.firestore().collection('articles'))
-      console.log(
-        firebase
-          .firestore()
-          .collection('articles')
-          .doc(context.params.id)
-      )
-      console.log(
-        firebase
-          .firestore()
-          .collection('articles')
-          .doc(context.params.id)
-          .get()
-      )
-      console.log(
-        await firebase
-          .firestore()
-          .collection('articles')
-          .doc(context.params.id)
-          .get()
-      )
-    } catch (e) {
-      console.log('error')
-      console.log(e)
-    }
-    const doc = await firebase
-      .firestore()
+    const firestore = context.app.$firestore
+    const doc = await firestore
       .collection('articles')
       .doc(context.params.id)
       .get()
-    console.log(doc)
-    console.log(doc.exists)
     if (!doc.exists) {
-      console.log('みつからないらしい！')
       context.error({ statusCode: 404, message: 'Not Found' })
       return
     }
-    console.log('みつかっている？！')
     const data = doc.data()!
     const article = {
       id: doc.id,
@@ -107,9 +70,7 @@ export default class Index extends Vue {
     updatedAt: new Date()
   }
 
-  mounted(): void {
-    console.log(this.article)
-  }
+  mounted(): void {}
 }
 </script>
 

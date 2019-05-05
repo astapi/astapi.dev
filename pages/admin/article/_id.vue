@@ -15,8 +15,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import firebase from 'firebase/app'
-import 'firebase/firestore'
-import auth from '@/plugins/auth'
 
 interface Article {
   id: string
@@ -38,13 +36,8 @@ export default class ArticleEdit extends Vue {
   articleId: string = ''
 
   async mounted(): Promise<void> {
-    const user = await auth()
-    if (!user) this.$router.push('/')
-
     this.articleId = this.$route.params.id
-    console.log(this.articleId)
-    const doc = await firebase
-      .firestore()
+    const doc = await this.$firestore
       .collection('articles')
       .doc(this.articleId)
       .get()
@@ -61,8 +54,7 @@ export default class ArticleEdit extends Vue {
     }
     const contentHtml = this.editor.getHTML()
     const contentJson = this.editor.getJSON()
-    await firebase
-      .firestore()
+    await this.$firestore
       .collection('articles')
       .doc(this.articleId)
       .update({

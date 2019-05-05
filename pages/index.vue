@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { format } from 'date-fns'
 
@@ -41,12 +40,9 @@ interface Article {
     }
   },
 
-  async asyncData() {
-    console.log('来るよね')
-    const q = await firebase
-      .firestore()
-      .collection('articles')
-      .get()
+  async asyncData(context: any) {
+    const firestore = context.app.$firestore
+    const q = await firestore.collection('articles').get()
     const list = q.docs.map(doc => {
       const data = doc.data()
       return {
