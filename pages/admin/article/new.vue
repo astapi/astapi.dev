@@ -16,7 +16,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-import auth from '@/plugins/auth'
 
 @Component({
   components: {
@@ -28,10 +27,7 @@ export default class ArticleNew extends Vue {
   editor: any = null
   articleTitle: string = ''
 
-  async mounted(): Promise<void> {
-    const user = await auth()
-    if (!user) this.$router.push('/')
-  }
+  mounted(): Promise<void> {}
 
   async save(): Promise<void> {
     if (this.articleTitle === '') {
