@@ -1,5 +1,6 @@
 <template>
   <ArticleCommon :article="article">
+    <!-- eslint-disable-next-line -->
     <div class="content article-body" v-html="article.contentHtml"></div>
   </ArticleCommon>
 </template>
