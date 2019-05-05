@@ -35,7 +35,7 @@ const config: NuxtConfiguration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '@/plugins/firebase.ts', ssr: true },
+    '@/plugins/firebase.ts',
     {
       src: '@/plugins/element-ui',
       // ssr: false
@@ -49,7 +49,7 @@ const config: NuxtConfiguration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    ['@nuxtjs/dotenv', { systemvars: true }]
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Axios module configuration
