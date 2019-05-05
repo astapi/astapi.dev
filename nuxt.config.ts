@@ -65,7 +65,8 @@ const config: NuxtConfiguration = {
 
   serverMiddleware: [
     // SSR 時に cookie から ログイン状態をチェックする
-    '@/serverMiddleware/validateFirebaseIdToken'
+    '@/serverMiddleware/validateFirebaseIdToken',
+    '@/serverMiddleware/addResponseHeader',
   ],
 
   /*

@@ -2,7 +2,7 @@
 import cookieParser from 'cookie-parser'
 
 module.exports = (req, res, next) => {
-  console.log('servermiddleware')
+  console.log('servermiddleware:validateFirebaseIdToken')
   getIdTokenFromRequest(req, res).then(idToken => {
     if (idToken) {
       // 一旦 cookie があれば ログイン済とする
