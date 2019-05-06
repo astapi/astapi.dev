@@ -5,7 +5,7 @@
         <label class="label">Email</label>
         <div class="control">
           <input
-            v-model="form.emal"
+            v-model="form.email"
             class="input"
             type="email"
             placeholder="Email input"
@@ -63,9 +63,12 @@ export default class Login extends Vue {
       this.$firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then((credential: firebase.auth.UserCredential) => {
+        // .then((credential: firebase.auth.UserCredential) => {
+        .then(() => {
           console.log('login!')
-          this.$store.commit('SET_USER', credential)
+          // this.$store.commit('user/setUser', credential)
+          // 一時的にログイン状態は booleanで表す
+          this.$store.commit('user/setUser', true)
 
           // SSR 認証用の cookie をセットする
           this.$firebase

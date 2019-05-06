@@ -1,12 +1,6 @@
-export const state = () => ({
-  authUser: null
-})
+export const state = () => ({})
 
-export const mutations = {
-  SET_USER(state, user) {
-    state.authUser = user
-  }
-}
+export const mutations = {}
 
 export const actions = {
   // context は ActioncContext<S, R>
@@ -18,7 +12,7 @@ export const actions = {
     const user = nuxtContext.req.user
     console.log('user:', user)
     if (user) {
-      context.commit('SET_USER', user)
+      context.commit('user/setUser', user)
     }
   }
 }

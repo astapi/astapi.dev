@@ -1,6 +1,6 @@
 export default function (context) {
   console.log('auth middleware')
-  const user = context.store.state.authUser
+  const user = context.store.state.user.authUser
   const reg = new RegExp('^/admin')
   // admin から始まるパスの場合は state に user がいないとリダイレクト
   if (context.route.path.match(reg)) {
