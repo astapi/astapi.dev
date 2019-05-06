@@ -10,30 +10,18 @@
 
     <editor-menu-bar :editor="editor" class="editor-menu-bar">
       <div slot-scope="{ commands, isActive }">
-        <el-button
-          type="info"
-          class="menubar__button"
+        <a
+          class="button is-dark"
           :class="{ 'is-active': isActive.bullet_list() }"
           @click="commands.bullet_list"
-          >ul</el-button
+          >ul</a
         >
-        <el-button
-          type="info"
-          button
-          class="menubar__button"
+        <a
+          class="button is-dark"
           :class="{ 'is-active': isActive.ordered_list() }"
           @click="commands.ordered_list"
-          >ol</el-button
+          >ol</a
         >
-        <!--
-        <el-button
-          type="info"
-          button
-          class="menubar__button"
-          @click="showEmbedYoutubeDialog(commands.embedYoutube)"
-          >youtube</el-button
-        >
-        -->
       </div>
     </editor-menu-bar>
 
@@ -78,25 +66,6 @@
         </button>
       </div>
     </editor-menu-bubble>
-
-    <el-dialog
-      title="youtubeのembed作成"
-      :visible.sync="visibleEmbedYoutubeDigalog"
-      :before-close="
-        () => {
-          visibleEmbedYoutubeDigalog = !visibleEmbedYoutubeDigalog
-        }
-      "
-      width="40%"
-    >
-      <p>youtubeの動画URLをいれてください</p>
-      <el-input v-model="embedSrc"></el-input>
-      <div style="display: flex; flex-direction: row-reverse;">
-        <el-button style="margin-top: 20px;" @click="insertEmbedNode"
-          >インサート</el-button
-        >
-      </div>
-    </el-dialog>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <no-ssr>
-      <el-button @click="save">保存やで</el-button>
+      <a class="button is-info" @click="save">保存やで</a>
       <ArticleEditor
         :editor.sync="editor"
         :article-title.sync="articleTitle"

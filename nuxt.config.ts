@@ -27,7 +27,6 @@ const config: NuxtConfiguration = {
    ** Global CSS
    */
   css: [
-    'element-ui/lib/theme-chalk/index.css',
     'bulma/bulma.sass'
   ],
 
@@ -35,12 +34,7 @@ const config: NuxtConfiguration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/firebase.ts',
-    {
-      src: '@/plugins/element-ui',
-      // ssr: false
-      ssr: true
-    }
+    '@/plugins/firebase.ts'
   ],
 
   /*
@@ -73,8 +67,6 @@ const config: NuxtConfiguration = {
    ** Build configuration
    */
   build: {
-    transpile: [/^element-ui/],
-
     /*
      ** You can extend webpack config here
      */

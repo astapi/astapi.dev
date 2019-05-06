@@ -1,29 +1,50 @@
 <template>
-  <div>
-    <el-table :data="list">
-      <el-table-column label="タイトル">
-        <template slot-scope="scope">
-          <nuxt-link :to="`/admin/article/${scope.row.id}`">{{
-            scope.row.articleTitle
-          }}</nuxt-link>
-        </template>
-      </el-table-column>
-    </el-table>
-  </div>
+  <section class="section">
+    <div class="container">
+      <nuxt-link to="/admin/article/new" class="button if-info"
+        >新規作成</nuxt-link
+      >
+      <table
+        class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+      >
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>タイトル</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article of list" :key="article.id">
+            <th>{{ article.id }}</th>
+            <th>
+              <nuxt-link :to="`/admin/article/${article.id}`">{{
+                article.articleTitle
+              }}</nuxt-link>
+            </th>
+            <th>{{ article.createdAt | formatDate }}</th>
+            <th>{{ article.updatedAt | formatDate }}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import 'firebase/firestore'
+import { format } from 'date-fns'
+import { Article } from '@/store/articles'
 
-interface Article {
-  id: string
-  articleTitle: string
-  contentHtml: string
-  contentJson: string
-}
-
-@Component
+@Component({
+  filters: {
+    formatDate(date): string {
+      return format(date, 'YYYY/MM/DD hh:mm:ss')
+    }
+  }
+})
 export default class Index extends Vue {
   list: Article[] = []
 
@@ -33,7 +54,9 @@ export default class Index extends Vue {
       const data = doc.data()
       return {
         id: doc.id,
-        articleTitle: data.articleTitle
+        articleTitle: data.articleTitle,
+        createdAt: data.createdAt.toDate(),
+        updatedAt: data.updatedAt.toDate()
       } as Article
     })
   }

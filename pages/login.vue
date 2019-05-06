@@ -1,16 +1,46 @@
 <template>
-  <el-form ref="form" :model="form" label-width="120px">
-    <el-form-item label="email">
-      <el-input v-model="form.email"></el-input>
-    </el-form-item>
-    <el-form-item label="password">
-      <el-input v-model="form.password" type="password"></el-input>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="login()">ログイン</el-button>
-    </el-form-item>
-  </el-form>
+  <section class="section">
+    <div class="container">
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input
+            v-model="form.emal"
+            class="input"
+            type="email"
+            placeholder="Email input"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input
+            v-model="form.password"
+            class="input"
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <a class="button is-info" @click="login()">ログイン</a>
+      </div>
+    </div>
+  </section>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.field {
+  min-width: 400px;
+  max-width: 400px;
+}
+</style>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
