@@ -45,7 +45,7 @@ import { Article } from '@/store/articles'
     }
   }
 })
-export default class Index extends Vue {
+export default class AdminIndex extends Vue {
   list: Article[] = []
 
   async mounted(): Promise<void> {

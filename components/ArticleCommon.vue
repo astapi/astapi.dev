@@ -6,10 +6,8 @@
           <p class="title article-title">
             {{ article.articleTitle }}
           </p>
-          <div class="tags has-addons level-item">
-            <a href="https://twitter.com/astapi">
-              <span class="tag is-rounded is-info">@astapi</span>
-            </a>
+          <div class="tags level-item">
+            <span v-for="tag in article.tags" :key="tag" class="tag is-rounded is-info">{{ tag }}</span>
             <span class="tag is-rounded">{{
               article.createdAt | formatDate
             }}</span>

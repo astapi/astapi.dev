@@ -21,7 +21,7 @@
 </style>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import 'firebase/firestore'
 import { format } from 'date-fns'
 import { Article } from '@/store/articles'
@@ -36,7 +36,12 @@ import { Article } from '@/store/articles'
     formatDate(date): string {
       return format(date, 'YYYY/MM/DD hh:mm:ss')
     }
-  },
+  }
+})
+export default class Index extends Vue {
+  list: Article[] = []
+
+  mounted(): void {}
 
   async asyncData(context: any) {
     // storeに入っていたらそれを返す
@@ -46,13 +51,17 @@ import { Article } from '@/store/articles'
     }
 
     const firestore = context.app.$firestore
-    const q = await firestore.collection('articles').get()
+    const q = await firestore
+      .collection('articles')
+      .where('status', '==', 'published')
+      .get()
     const list = q.docs.map(doc => {
       const data = doc.data()
       return {
         id: doc.id,
         articleTitle: data.articleTitle,
         contentHtml: data.contentHtml,
+        tags: data.tags,
         createdAt: data.createdAt.toDate(),
         updatedAt: data.updatedAt.toDate()
       } as Article
@@ -62,10 +71,5 @@ import { Article } from '@/store/articles'
     context.store.commit('articles/setList', list)
     return { list }
   }
-})
-export default class Index extends Vue {
-  list: Article[] = []
-
-  mounted(): void {}
 }
 </script>
