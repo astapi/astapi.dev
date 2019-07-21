@@ -34,8 +34,7 @@ const config: NuxtConfiguration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/firebase.ts',
-    '@/plugins/cloudinary.ts',
+    '@/plugins/firebase.ts'
   ],
 
   /*
