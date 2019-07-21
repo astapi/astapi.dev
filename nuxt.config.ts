@@ -34,7 +34,8 @@ const config: NuxtConfiguration = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/firebase.ts'
+    '@/plugins/firebase.ts',
+    '@/plugins/cloudinary.ts',
   ],
 
   /*
@@ -74,12 +75,12 @@ const config: NuxtConfiguration = {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         if (!config.module) return;
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+        // config.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /(node_modules)/
+        // })
       }
     }
   }
