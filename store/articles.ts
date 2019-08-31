@@ -4,6 +4,7 @@ export interface RootState {}
 export interface Article {
   id: string
   articleTitle: string
+  ogImagePath: string
   contentHtml: string
   createdAt: Date
   updatedAt: Date

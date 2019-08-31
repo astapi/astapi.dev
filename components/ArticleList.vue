@@ -5,9 +5,9 @@
       :key="article.id"
       :article="article"
     >
-      <div class="content article-body">
+      <div class="content article-body" style="display: flex; justify-content: center;">
         <nuxt-link :to="`article/${article.id}`">
-          <a class="button is-text">もっと見る</a>
+          <a class="button is-info is-outlined">もっと見る</a>
         </nuxt-link>
       </div>
     </ArticleCommon>

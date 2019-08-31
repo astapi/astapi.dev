@@ -64,6 +64,7 @@ export default class Index extends Vue {
   article: Article = {
     id: '1',
     articleTitle: '',
+    ogImagePath: '',
     contentHtml: '',
     createdAt: new Date(),
     updatedAt: new Date()

@@ -64,6 +64,13 @@
         >
           quote
         </button>
+        <button
+          class="menububble__button"
+          :class="{ 'is-active': isActive.link() }"
+          @click="commands.link"
+        >
+          link
+        </button>
       </div>
     </editor-menu-bubble>
   </div>
@@ -90,6 +97,39 @@
     &.embed-youtube {
       width: 608px;
       height: 342px;
+    }
+  }
+
+  .amazon-card {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    a {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #f2f2f2;
+      border-radius: 4px;
+      padding: 20px;
+
+      .item-detail {
+        display: flex;
+      }
+      .detail-button {
+        width: 80%;
+        border: 1px solid #f2f2f2;
+        border-radius: 4px;
+      }
+    }
+    img {
+      height: 100px;
+    }
+  }
+
+  p {
+    img {
+      display: block;
+      margin: 0 auto;
     }
   }
 }
@@ -141,10 +181,6 @@
 }
 
 .editor-container {
-  width: 620px;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .title-container input {
   color: #444444;
@@ -156,7 +192,7 @@
 .content {
   color: #444444;
   margin-top: 50px;
-  min-height: 700px;
+  min-height: 200px;
   font-size: 18px;
   line-height: 36px;
 }
@@ -184,7 +220,7 @@ import {
   History,
   HardBreak
 } from 'tiptap-extensions'
-// import EmbedYoutube from './extentions/embedYoutube'
+import { AmazonCard } from '../editor/amazonCard'
 
 @Component({
   components: {
@@ -232,8 +268,8 @@ export default class ArticleEditor extends Vue {
         new Link(),
         new Image(),
         new History(),
-        new HardBreak()
-        // new EmbedYoutube(),
+        new HardBreak(),
+        new AmazonCard()
       ],
       content: this.articleContent || '',
       autoFocus: true

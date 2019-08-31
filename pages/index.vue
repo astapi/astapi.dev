@@ -54,12 +54,14 @@ export default class Index extends Vue {
     const q = await firestore
       .collection('articles')
       .where('status', '==', 'published')
+      .orderBy('publishedAt', 'desc')
       .get()
     const list = q.docs.map(doc => {
       const data = doc.data()
       return {
         id: doc.id,
         articleTitle: data.articleTitle,
+        ogImagePath: data.ogImagePath,
         contentHtml: data.contentHtml,
         tags: data.tags,
         createdAt: data.createdAt.toDate(),

@@ -3,11 +3,19 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content has-text-centered">
-          <p class="title article-title">
+          <div v-if="article.ogImagePath">
+            <img style="width: 384px; height: 216px;" :src="article.ogImagePath" />
+          </div>
+          <p class="article-title">
             {{ article.articleTitle }}
           </p>
           <div class="tags level-item">
-            <span v-for="tag in article.tags" :key="tag" class="tag is-rounded is-info">{{ tag }}</span>
+            <span
+              v-for="tag in article.tags"
+              :key="tag"
+              class="tag is-rounded"
+              >{{ tag }}</span
+            >
             <span class="tag is-rounded">{{
               article.createdAt | formatDate
             }}</span>
@@ -18,6 +26,19 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.article-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.tag {
+  background-color: rgb(0, 187, 255);
+  color: white;
+}
+</style>
+
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'

@@ -20,3 +20,13 @@ export default class ArticleDetail extends Vue {
   mounted(): void {}
 }
 </script>
+<style lang="scss" scoped>
+.content {
+  /deep/ p {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+</style>

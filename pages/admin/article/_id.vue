@@ -47,6 +47,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import CommonDialog from '@/components/commonDialog.vue'
 import firebase from 'firebase/app'
+import { updateExpression } from '@babel/types';
 
 interface Article {
   id: string
@@ -96,15 +97,24 @@ export default class ArticleEdit extends Vue {
     }
     const contentHtml = this.editor.getHTML()
     const contentJson = this.editor.getJSON()
+    // html中の最初のimgタグのsrcをogpとして扱う
+    const match = contentHtml.match(/<img src=["'](.+?)["']>/)
+
+    const updateParams: any = {
+      contentHtml,
+      contentJson,
+      articleTitle: this.articleTitle,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }
+    if (match) {
+      const imgPath = match[1]
+      console.log(imgPath)
+      updateParams.ogImagePath = imgPath;
+    }
     await this.$firestore
       .collection('articles')
       .doc(this.articleId)
-      .update({
-        contentHtml,
-        contentJson,
-        articleTitle: this.articleTitle,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-      })
+      .update(updateParams)
     alert('保存したで')
     this.init()
   }
