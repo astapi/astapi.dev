@@ -5,6 +5,12 @@
       :key="article.id"
       :article="article"
     >
+      <template v-slot:ogImage>
+        <div v-if="article.ogImagePath">
+          <img style="width: 384px; height: 216px;" :src="article.ogImagePath" />
+        </div>
+      </template>
+
       <div class="content article-body" style="display: flex; justify-content: center;">
         <nuxt-link :to="`article/${article.id}`">
           <a class="button is-info is-outlined">もっと見る</a>

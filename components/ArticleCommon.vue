@@ -3,9 +3,7 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content has-text-centered">
-          <div v-if="article.ogImagePath">
-            <img style="width: 384px; height: 216px;" :src="article.ogImagePath" />
-          </div>
+          <slot name="ogImage"></slot>
           <p class="article-title">
             {{ article.articleTitle }}
           </p>
