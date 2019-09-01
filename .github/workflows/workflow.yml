@@ -1,6 +1,9 @@
-name: CI
+name: deoloy to heroku
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
 
 jobs:
   build:
