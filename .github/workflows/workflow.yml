@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    # - uses: actions/checkout@v1
+    - name: install git
+      run: apt-get install git
+    - name: deoloy to heroku
+      env:
+        HEROKU_APP: astapi-dev-blog
+      run: git push https://heroku:${{ HEROKU_API_KEY }}@git.heroku.com/${{ HEROKU_APP }}.git master
