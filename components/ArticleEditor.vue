@@ -220,7 +220,7 @@ import {
   History,
   HardBreak
 } from 'tiptap-extensions'
-import { AmazonCard } from '../editor/amazonCard'
+// import { AmazonCard } from '../editor/amazonCard'
 
 @Component({
   components: {
@@ -269,7 +269,7 @@ export default class ArticleEditor extends Vue {
         new Image(),
         new History(),
         new HardBreak(),
-        new AmazonCard()
+        // new AmazonCard()
       ],
       content: this.articleContent || '',
       autoFocus: true
