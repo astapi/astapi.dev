@@ -27,7 +27,7 @@ import { Article } from '@/store/articles'
 
   filters: {
     formatDate(date): string {
-      return format(date, 'YYYY/MM/DD hh:mm:ss')
+      return format(date, 'yyyy/MM/dd hh:mm:ss')
     }
   },
 
