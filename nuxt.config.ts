@@ -1,8 +1,8 @@
-import NuxtConfiguration from '@nuxt/config'
+import { Configuration } from '@nuxt/types'
 const pkg = require('./package')
 require('dotenv').config()
 
-const config: NuxtConfiguration = {
+const config: Configuration = {
   mode: 'universal',
 
   /*
@@ -43,8 +43,12 @@ const config: NuxtConfiguration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     // '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // '@nuxtjs/tailwindcss'
   ],
+
+  buildModules: ['@nuxt/typescript-build'],
+
   /*
    ** Axios module configuration
    */
@@ -62,6 +66,11 @@ const config: NuxtConfiguration = {
     '@/serverMiddleware/validateFirebaseIdToken',
     '@/serverMiddleware/addResponseHeader',
   ],
+
+  // tailwindcss: {
+  //   configPath: '@/tailwind.config.js',
+  //   cssPath: '~/assets/css/tailwind.css'
+  // },
 
   /*
    ** Build configuration
