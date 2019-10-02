@@ -63,8 +63,8 @@ const config: Configuration = {
 
   serverMiddleware: [
     // SSR 時に cookie から ログイン状態をチェックする
-    '@/serverMiddleware/validateFirebaseIdToken',
-    '@/serverMiddleware/addResponseHeader',
+    '@/serverMiddleware/validateFirebaseIdToken.ts',
+    '@/serverMiddleware/addResponseHeader.ts',
   ],
 
   // tailwindcss: {
