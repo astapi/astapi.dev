@@ -1,7 +1,7 @@
 <template>
   <div>
     <no-ssr>
-      <a class="button is-info" @click="save">保存やで</a>
+      <a class="shadow border p-1 bg-white m-3 block" style="width: 80px;" @click="save">保存やで</a>
       <ArticleEditor
         :editor.sync="editor"
         :article-title.sync="articleTitle"
