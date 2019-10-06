@@ -1,11 +1,30 @@
 <template>
   <div>
-    <nuxt />
+    <GlobalHeader></GlobalHeader>
+    <nuxt class="container mx-auto" />
+    <GlobalFooter></GlobalFooter>
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import GlobalHeader from '@/components/GlobalHeader.vue'
+import GlobalFooter from '@/components/GlobalFooter.vue'
+
+@Component({
+  components: {
+    GlobalHeader,
+    GlobalFooter
+  }
+})
+export default class Index extends Vue {}
+</script>
+
 <style>
-html {
+body {
+  @apply font-sans bg-gray-100;
+}
+/* html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
@@ -51,5 +70,5 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
-}
+} */
 </style>

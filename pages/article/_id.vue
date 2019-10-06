@@ -1,16 +1,7 @@
 <template>
-  <div>
-    <GlobalHeader></GlobalHeader>
-    <section class="section">
-      <div class="container">
-        <section class="articles">
-          <div class="column is-8 is-offset-2">
-            <ArticleDetail :article="article"></ArticleDetail>
-          </div>
-        </section>
-      </div>
-    </section>
-  </div>
+  <section>
+    <ArticleDetail :article="article"></ArticleDetail>
+  </section>
 </template>
 
 <script lang="ts">
@@ -21,7 +12,6 @@ import { Article } from '@/store/articles'
 
 @Component({
   components: {
-    GlobalHeader: () => import('@/components/GlobalHeader.vue'),
     ArticleDetail: () => import('@/components/ArticleDetail.vue')
   },
 
@@ -53,6 +43,7 @@ import { Article } from '@/store/articles'
     const article = {
       id: doc.id,
       articleTitle: data.articleTitle,
+      tags: data.tags,
       contentHtml: data.contentHtml,
       createdAt: data.createdAt.toDate(),
       updatedAt: data.updatedAt.toDate()

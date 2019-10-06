@@ -1,24 +1,10 @@
 <template>
-  <div>
-    <GrobalHeader></GrobalHeader>
-
-    <section class="section">
-      <div class="container">
-        <section class="articles">
-          <div class="column is-8 is-offset-2">
-            <ArticleList :article-list="list"></ArticleList>
-          </div>
-        </section>
-      </div>
+  <section class="mt-3">
+    <section class="articles px-1">
+      <ArticleList :article-list="list"></ArticleList>
     </section>
-  </div>
+  </section>
 </template>
-
-<style>
-.section .card {
-  margin-bottom: 50px;
-}
-</style>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
@@ -28,7 +14,6 @@ import { Article } from '@/store/articles'
 
 @Component({
   components: {
-    GrobalHeader: () => import('@/components/GlobalHeader.vue'),
     ArticleList: () => import('@/components/ArticleList.vue')
   },
 
