@@ -100,6 +100,31 @@
     }
   }
 
+  p {
+    margin-bottom: 1.2rem;
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    a {
+      @apply text-blue-400;
+    }
+    code {
+      @apply bg-gray-400 text-red-400 p-1;
+    }
+  }
+
+  pre {
+    margin-bottom: 1.2rem;
+    @apply bg-white;
+
+    code {
+      @apply text-red-400 p-1;
+    }
+  }
+
   .amazon-card {
     cursor: pointer;
     display: flex;
