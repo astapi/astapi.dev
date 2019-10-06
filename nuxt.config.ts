@@ -26,9 +26,9 @@ const config: Configuration = {
   /*
    ** Global CSS
    */
-  css: [
-    'bulma/bulma.sass'
-  ],
+  // css: [
+  //   'bulma/bulma.sass'
+  // ],
 
   /*
    ** Plugins to load before mounting the App
@@ -44,10 +44,12 @@ const config: Configuration = {
     // Doc: https://axios.nuxtjs.org/usage
     // '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    // '@nuxtjs/tailwindcss'
   ],
 
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/tailwindcss'
+  ],
 
   /*
    ** Axios module configuration
@@ -67,10 +69,10 @@ const config: Configuration = {
     '@/serverMiddleware/addResponseHeader.ts',
   ],
 
-  // tailwindcss: {
-  //   configPath: '@/tailwind.config.js',
-  //   cssPath: '~/assets/css/tailwind.css'
-  // },
+  tailwindcss: {
+    configPath: '@/tailwind.config.js',
+    cssPath: '~/assets/css/tailwind.css'
+  },
 
   /*
    ** Build configuration

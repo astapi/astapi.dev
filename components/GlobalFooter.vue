@@ -1,7 +1,9 @@
 <template>
-  <section class="flex justify-center p-5 text-xl font-semibold bg-white">
+  <section
+    class="flex justify-center mt-3 p-3 text-base text-gray-500 bg-white"
+  >
     <nuxt-link to="/">
-      <h1>あすたぴ.dev</h1>
+      <h1>Copyright © astapi</h1>
     </nuxt-link>
   </section>
 </template>
@@ -9,5 +11,5 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 @Component
-export default class GlobalHeader extends Vue {}
+export default class GlobalFooter extends Vue {}
 </script>
