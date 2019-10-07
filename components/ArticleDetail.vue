@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white pt-5 px-4 lg:max-w-4xl lg:mx-auto lg:p-8">
+  <section class="bg-white pt-5 px-4 max-w-sm lg:max-w-4xl lg:mx-auto lg:p-8">
     <div id="article" class="bg-white">
       <p id="article-title" class="text-xl font-medium">
         {{ article.articleTitle }}
@@ -12,7 +12,7 @@
       }}</div>
 
       <!-- eslint-disable-next-line -->
-      <div id="article-body" class="content my-3 leading-relaxed text-gray-900" v-html="article.contentHtml"></div>
+      <div v-highlightjs id="article-body" class="content my-3 leading-relaxed text-gray-900" v-html="article.contentHtml"></div>
     </div>
   </section>
 </template>
@@ -43,6 +43,7 @@ export default class ArticleDetail extends Vue {
     img {
       display: block;
       margin: 0 auto;
+      @apply w-64;
     }
 
     a {
@@ -52,6 +53,11 @@ export default class ArticleDetail extends Vue {
     code {
       @apply bg-gray-200 text-red-400 p-1;
     }
+  }
+
+  /deep/ pre {
+    margin-bottom: 1.2rem;
+    overflow: scroll;
   }
 }
 
