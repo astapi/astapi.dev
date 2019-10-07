@@ -9,7 +9,6 @@ import { Component, Vue } from 'vue-property-decorator'
 import 'firebase/firestore'
 import { format } from 'date-fns'
 import { Article } from '@/store/articles'
-import 'highlight.js/styles/github.css';
 
 @Component({
   components: {
@@ -64,4 +63,4 @@ export default class Index extends Vue {
 }
 </script>
 
-<style></style>
+<style src='highlight.js/styles/solarized-dark.css'></style>

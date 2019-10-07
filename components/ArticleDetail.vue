@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white pt-5 px-4 max-w-sm lg:max-w-4xl lg:mx-auto lg:p-8">
+  <section class="bg-white pt-5 px-4 w-sm md:max-w-4xl mx-auto lg:p-8">
     <div id="article" class="bg-white">
       <p id="article-title" class="text-xl font-medium">
         {{ article.articleTitle }}
@@ -32,7 +32,11 @@ import { Article } from '@/store/articles'
 export default class ArticleDetail extends Vue {
   @Prop() readonly article!: Article
 
-  mounted(): void {}
+  head() {
+    return {
+      title: this.article.articleTitle
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
