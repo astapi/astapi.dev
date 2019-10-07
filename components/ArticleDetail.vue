@@ -72,3 +72,4 @@ export default class ArticleDetail extends Vue {
   margin-left: 2px;
 }
 </style>
+<style src='highlight.js/styles/solarized-dark.css'></style>
