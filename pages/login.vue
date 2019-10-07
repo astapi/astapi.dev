@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="field">
-        <a class="button is-info" @click="login()">ログイン</a>
+        <button @click="login()">ログイン</button>
       </div>
     </div>
   </section>

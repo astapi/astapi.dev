@@ -62,5 +62,3 @@ export default class Index extends Vue {
   }
 }
 </script>
-
-<style src='highlight.js/styles/solarized-dark.css'></style>
