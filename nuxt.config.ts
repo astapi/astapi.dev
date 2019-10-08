@@ -59,6 +59,42 @@ const config: Configuration = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+  purgeCSS: {
+    // highlightjs の style 用の selector を purge しない
+    whitelist: [
+      'hljs',
+      'hljs-subst',
+      'hljs-string',
+      'hljs-title',
+      'hljs-symbol',
+      'hljs-bullet',
+      'hljs-attribute',
+      'hljs-addition',
+      'hljs-variable',
+      'hljs-template-tag',
+      'hljs-template-variable',
+      'hljs-comment',
+      'hljs-quote',
+      'hljs-number',
+      'hljs-regexp',
+      'hljs-literal',
+      'hljs-type',
+      'hljs-link',
+      'hljs-deletion',
+      'hljs-meta',
+      'hljs-keyword',
+      'hljs-selector-tag',
+      'hljs-doctag',
+      'hljs-title',
+      'hljs-section',
+      'hljs-built_in',
+      'hljs-tag',
+      'hljs-name',
+      'hljs-emphasis',
+      'hljs-strong',
+    ]
+  },
+
   // adminページの認証用
   router: {
     middleware: 'auth'
