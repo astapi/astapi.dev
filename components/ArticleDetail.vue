@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white pt-5 px-4 w-sm md:max-w-4xl mx-auto lg:p-8">
     <div id="article" class="bg-white">
-      <p id="article-title" class="text-xl font-medium">
+      <p id="article-title" class="text-2xl font-medium">
         {{ article.articleTitle }}
       </p>
       <div id="tags" class="mt-3 flex">
@@ -12,7 +12,7 @@
       }}</div>
 
       <!-- eslint-disable-next-line -->
-      <div v-highlightjs id="article-body" class="content my-3 leading-relaxed text-gray-900" v-html="article.contentHtml"></div>
+      <div v-highlightjs id="article-body" class="content my-3 leading-loose text-gray-900" v-html="article.contentHtml"></div>
     </div>
   </section>
 </template>
