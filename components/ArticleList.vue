@@ -14,7 +14,7 @@
           />
         </div>
 
-        <h2 id="article-title" class="text-base">{{ article.articleTitle }}</h2>
+        <h2 id="article-title">{{ article.articleTitle }}</h2>
         <span class="flex justify-end text-gray-500">{{ article.createdAt | formatDate }}</span>
       </nuxt-link>
     </div>
