@@ -45,6 +45,7 @@ const config: Configuration = {
     // Doc: https://axios.nuxtjs.org/usage
     // '@nuxtjs/axios',
     '@nuxtjs/dotenv',
+    ['@nuxtjs/google-analytics', { id: process.env.GA_ID }],
   ],
 
   buildModules: [
