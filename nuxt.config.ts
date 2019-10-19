@@ -9,11 +9,22 @@ const config: Configuration = {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'あすたぴ.dev',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'あすたぴ.dev | Webサービスの構築に関する情報から書籍レビューまで' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'あすたぴ.dev' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://astapi.dev' },
+      { hid: 'og:title', property: 'og:title', content: 'あすたぴ.dev' },
+      { hid: 'og:description', property: 'og:description', content: 'あすたぴ.dev | Webサービスの構築に関する情報から書籍レビューまで' },
+      { hid: 'og:image', property: 'og:image', content: '/astapidev.png' },
+      { hid: 'twitter:site', property: 'twitter:site', content: 'あすたぴ.dev' },
+      { hid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
+      { hid: 'twitter:description', property: 'twitter:description', content: 'あすたぴ.dev | Webサービスの構築に関する情報から書籍レビューまで' },
+      { hid: 'twitter:title', property: 'twitter:title', content: 'あすたぴ.dev' },
+      { hid: 'twitter:image', property: 'twitter:image', content: '/astapidev.png' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },

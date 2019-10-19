@@ -52,6 +52,17 @@ import { Article } from '@/store/articles'
   }
 })
 export default class Index extends Vue {
+  head() {
+    return {
+      title: `${this.article.articleTitle} | あすたぴ.dev`,
+      meta: [
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:title', property: 'og:title', content: `${this.article.articleTitle} | あすたぴ.dev` },
+        { hid: 'og:url', property: 'og:url', content: this.$route.fullPath },
+        { hid: 'twitter:title', property: 'twitter:title', content: `${this.article.articleTitle} | あすたぴ.dev` },
+      ]
+    }
+  }
   article: Article = {
     id: '1',
     articleTitle: '',
