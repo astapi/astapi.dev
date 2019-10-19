@@ -3,7 +3,7 @@
     class="flex justify-center mt-3 p-3 text-base text-gray-500 bg-white"
   >
     <nuxt-link to="/">
-      <h1>Copyright © astapi</h1>
+      <p>Copyright © astapi</p>
     </nuxt-link>
   </section>
 </template>

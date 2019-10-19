@@ -31,12 +31,6 @@ import { Article } from '@/store/articles'
 })
 export default class ArticleDetail extends Vue {
   @Prop() readonly article!: Article
-
-  head() {
-    return {
-      title: this.article.articleTitle
-    }
-  }
 }
 </script>
 <style lang="scss" scoped>
