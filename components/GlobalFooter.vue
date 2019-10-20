@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex justify-center mt-3 p-3 text-gray-500 bg-white"
+    class="flex justify-center mt-3 p-3 text-gray-700 bg-white"
   >
     <nuxt-link to="/">
       <p>Copyright © astapi</p>

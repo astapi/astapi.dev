@@ -8,14 +8,14 @@
       <nuxt-link :to="`article/${article.id}`">
         <div v-if="article.ogImagePath">
           <img
-            style="width: 384px; height: 216px;"
+            alt=""
             class="mx-auto"
             :src="article.ogImagePath"
           />
         </div>
 
-        <h2 id="article-title">{{ article.articleTitle }}</h2>
-        <span class="flex justify-end text-gray-500">{{ article.createdAt | formatDate }}</span>
+        <h2 class="article-title">{{ article.articleTitle }}</h2>
+        <span class="flex justify-end text-gray-700">{{ article.createdAt | formatDate }}</span>
       </nuxt-link>
     </div>
   </div>
