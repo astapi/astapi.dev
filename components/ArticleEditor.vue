@@ -25,7 +25,7 @@
       </div>
     </editor-menu-bar>
 
-    <div class="content">
+    <div class="content bg-white px-4">
       <editor-content :editor="editor" />
     </div>
 
@@ -76,7 +76,8 @@
   </div>
 </template>
 
-<style lang="scss">
+<style src='highlight.js/styles/solarized-dark.css'></style>
+<style lang="scss" scoped>
 .editor {
   position: relative;
   &__floating-menu {
@@ -100,7 +101,11 @@
     }
   }
 
-  p {
+  /deep/ h2 {
+    @apply text-2xl bg-blue-100 mb-5 pl-4 leading-relaxed font-semibold;
+  }
+
+  /deep/ p {
     margin-bottom: 1.2rem;
 
     img {
@@ -116,45 +121,12 @@
     }
   }
 
-  pre {
+  /deep/ pre {
     margin-bottom: 1.2rem;
     @apply bg-white;
 
     code {
       @apply text-red-400 p-1;
-    }
-  }
-
-  .amazon-card {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    a {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #f2f2f2;
-      border-radius: 4px;
-      padding: 20px;
-
-      .item-detail {
-        display: flex;
-      }
-      .detail-button {
-        width: 80%;
-        border: 1px solid #f2f2f2;
-        border-radius: 4px;
-      }
-    }
-    img {
-      height: 100px;
-    }
-  }
-
-  p {
-    img {
-      display: block;
-      margin: 0 auto;
     }
   }
 }

@@ -45,7 +45,7 @@ export default class AdminIndex extends Vue {
   list: Article[] = []
 
   async mounted(): Promise<void> {
-    const q = await this.$firestore.collection('articles').get()
+    const q = await this.$firestore.collection('articles').orderBy('createdAt', 'desc').get()
     this.list = q.docs.map(doc => {
       const data = doc.data()
       return {

@@ -22,7 +22,8 @@ export default class Index extends Vue {}
 
 <style>
 body {
-  @apply font-sans bg-gray-100 text-lg;
+  @apply bg-gray-100 text-lg;
+  font-family: 'Hiragino Kaku Gothic Pro,serif';
 }
 /* html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

@@ -40,10 +40,6 @@ import { Article } from '@/store/articles'
       return
     }
     const data = doc.data()!
-    if (data.status === 'draft') {
-      context.error({ statusCode: 404, message: 'Not Found' })
-      return;
-    }
     const article = {
       id: doc.id,
       articleTitle: data.articleTitle,
