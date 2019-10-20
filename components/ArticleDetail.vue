@@ -1,9 +1,9 @@
 <template>
   <section class="bg-white pt-5 px-4 w-sm md:max-w-4xl mx-auto lg:p-8">
     <div id="article" class="bg-white">
-      <p id="article-title" class="text-2xl font-medium">
+      <h1 id="article-title" class="text-3xl font-medium font-semibold">
         {{ article.articleTitle }}
-      </p>
+      </h1>
       <div id="tags" class="mt-3 flex">
         <div v-for="tag in article.tags" :key="tag" class="tag text-gray-700 shadow rounded-sm p-1">{{ tag }}</div>
       </div>
@@ -35,6 +35,11 @@ export default class ArticleDetail extends Vue {
 </script>
 <style lang="scss" scoped>
 .content {
+
+  /deep/ h2 {
+    @apply text-2xl bg-blue-100 mb-5 pl-4 leading-relaxed font-semibold;
+  }
+
   /deep/ p {
     margin-bottom: 1.2rem;
 
@@ -49,7 +54,7 @@ export default class ArticleDetail extends Vue {
     }
 
     code {
-      @apply bg-gray-200 text-red-400 p-1;
+      @apply text-red-400 p-1;
     }
   }
 
