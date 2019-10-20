@@ -7,7 +7,7 @@
       <div id="tags" class="mt-3 flex">
         <div v-for="tag in article.tags" :key="tag" class="tag text-gray-700 shadow rounded-sm p-1">{{ tag }}</div>
       </div>
-      <div id="publishedAt" class="text-gray-500 mt-3">{{
+      <div id="publishedAt" class="text-gray-700 mt-3">{{
         article.createdAt | formatDate
       }}</div>
 
