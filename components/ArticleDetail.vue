@@ -46,7 +46,6 @@ export default class ArticleDetail extends Vue {
     img {
       display: block;
       margin: 0 auto;
-      @apply w-64;
     }
 
     a {
