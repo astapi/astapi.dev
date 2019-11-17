@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth'
 // TODO 使うときになったら使用する場所でimportする
 // import 'firebase/auth';
 // import 'firebase/storage';

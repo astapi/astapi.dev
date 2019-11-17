@@ -46,6 +46,7 @@ export default class Index extends Vue {
       return {
         id: doc.id,
         articleTitle: data.articleTitle,
+        ogImageUrl: data.ogImageUrl,
         ogImagePath: data.ogImagePath,
         contentHtml: data.contentHtml,
         tags: data.tags,

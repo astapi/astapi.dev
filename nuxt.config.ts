@@ -49,7 +49,8 @@ const config: Configuration = {
    */
   plugins: [
     '@/plugins/firebase.ts',
-    '@/plugins/highlight.js'
+    '@/plugins/highlight.js',
+    '@/plugins/vue-lazyload.ts',
   ],
 
   /*
@@ -119,6 +120,7 @@ const config: Configuration = {
     // SSR 時に cookie から ログイン状態をチェックする
     '@/serverMiddleware/validateFirebaseIdToken.ts',
     '@/serverMiddleware/addResponseHeader.ts',
+    '@/api/images.js',
   ],
 
   tailwindcss: {

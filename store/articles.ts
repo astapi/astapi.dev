@@ -5,6 +5,7 @@ export interface Article {
   id: string
   articleTitle: string
   ogImagePath: string
+  ogImageUrl: string
   contentHtml: string
   createdAt: Date
   updatedAt: Date

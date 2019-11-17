@@ -6,11 +6,11 @@
       class="p-5 mt-3 bg-white shadow mx-auto"
     >
       <nuxt-link :to="`article/${article.id}`">
-        <div v-if="article.ogImagePath">
+        <div v-if="article.ogImageUrl">
           <img
             alt=""
             class="mx-auto"
-            :src="article.ogImagePath"
+            v-lazy="article.ogImageUrl"
           />
         </div>
 
