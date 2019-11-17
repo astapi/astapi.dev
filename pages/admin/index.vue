@@ -7,7 +7,9 @@
       <thead>
         <tr>
           <th>id</th>
+          <th>actions</th>
           <th>タイトル</th>
+          <th>OG Image</th>
           <th>作成日時</th>
           <th>更新日時</th>
         </tr>
@@ -16,9 +18,16 @@
         <tr v-for="article of list" :key="article.id">
           <th>{{ article.id }}</th>
           <th>
+            <button @click="createOg(article.articleTitle, article.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">create og</button>
+          </th>
+          <th>
             <nuxt-link :to="`/admin/article/${article.id}`">{{
               article.articleTitle
             }}</nuxt-link>
+          </th>
+          <th>
+            <img v-if="article.ogImageUrl" :src="article.ogImageUrl" alt="og image" />
+            <span v-else>no og</span>
           </th>
           <th>{{ article.createdAt | formatDate }}</th>
           <th>{{ article.updatedAt | formatDate }}</th>
@@ -51,10 +60,18 @@ export default class AdminIndex extends Vue {
       return {
         id: doc.id,
         articleTitle: data.articleTitle,
+        ogImageUrl: data.ogImageUrl,
         createdAt: data.createdAt.toDate(),
         updatedAt: data.updatedAt.toDate()
       } as Article
     })
+  }
+
+  async createOg(title, articleId) {
+    if (process.client) {
+      const text = encodeURI(title);
+      window.open(`/admin/html2canvas?text=${text}&articleId=${articleId}`, 'popup', "width=800,height=600")
+    }
   }
 }
 </script>
