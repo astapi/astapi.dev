@@ -70,7 +70,8 @@ export default class Index extends Vue {
     ogImageUrl: '',
     contentHtml: '',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    publishedAt: new Date(),
   }
 }
 </script>

@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import 'firebase/firestore'
-import { format } from 'date-fns'
+import { format, formatISO } from 'date-fns'
 import { Article } from '@/store/articles'
 
 @Component({
@@ -50,7 +50,8 @@ import { Article } from '@/store/articles'
       tags: data.tags,
       contentHtml: data.contentHtml,
       createdAt: data.createdAt.toDate(),
-      updatedAt: data.updatedAt.toDate()
+      updatedAt: data.updatedAt.toDate(),
+      publishedAt: data.publishedAt.toDate(),
     }
     return { article }
   }
@@ -63,10 +64,34 @@ export default class Index extends Vue {
         { hid: 'og:type', property: 'og:type', content: 'article' },
         { hid: 'og:title', property: 'og:title', content: `${this.article.articleTitle} | あすたぴ.dev` },
         { hid: 'og:url', property: 'og:url', content: this.$route.fullPath },
+        { hid: 'og:image', property: 'og:image', content: this.article.ogImageUrl },
         { hid: 'twitter:title', property: 'twitter:title', content: `${this.article.articleTitle} | あすたぴ.dev` },
-      ]
+        { hid: 'twitter:description', property: 'twitter:description', content: 'あすたぴ.dev', },
+        { hid: 'twitter:image', property: 'twitter:image', content: this.article.ogImageUrl },
+        { hid: 'description', name: 'description', content: 'あすたぴ.dev', },
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "Article",
+            "datePublished": "${this.datePublished}"
+            "dateModified": "${this.dateModified}"
+          }`,
+          type: 'application/ld+json',
+        },
+      ],
     }
   }
+
+  get datePublished() {
+    return formatISO(this.article.publishedAt)
+  }
+  get dateModified() {
+    return formatISO(this.article.updatedAt)
+  }
+
   article: Article = {
     id: '1',
     articleTitle: '',
@@ -74,7 +99,8 @@ export default class Index extends Vue {
     ogImageUrl: '',
     contentHtml: '',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    publishedAt: new Date(),
   }
 }
 </script>

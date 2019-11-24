@@ -51,7 +51,8 @@ export default class Index extends Vue {
         contentHtml: data.contentHtml,
         tags: data.tags,
         createdAt: data.createdAt.toDate(),
-        updatedAt: data.updatedAt.toDate()
+        updatedAt: data.updatedAt.toDate(),
+        publishedAt: data.publishedAt.toDate(),
       } as Article
     })
 
