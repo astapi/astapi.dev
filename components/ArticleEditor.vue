@@ -213,11 +213,10 @@ import {
   Code,
   Italic,
   Link,
-  Image,
   History,
   HardBreak
 } from 'tiptap-extensions'
-// import { AmazonCard } from '../editor/amazonCard'
+import { ImageTag } from '../editor/imageTag'
 
 @Component({
   components: {
@@ -263,7 +262,7 @@ export default class ArticleEditor extends Vue {
         new Code(),
         new Italic(),
         new Link(),
-        new Image(),
+        new ImageTag(),
         new History(),
         new HardBreak(),
         // new AmazonCard()

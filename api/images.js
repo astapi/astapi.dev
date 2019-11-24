@@ -13,9 +13,14 @@ const admin = firebase.initializeApp({
   storageBucket: process.env.BUCKET_NAME
 }, 'image')
 
-app.get("/images/:imageName", (req, res) => {
+const ImageType = {
+  og: 'og_images',
+  contents: 'contents',
+}
+
+app.get("/images/:imageType/:imageName", (req, res) => {
   const bucket = admin.storage().bucket()
-  bucket.file(`/og_images/${req.params.imageName}`).download().then((a) => {
+  bucket.file(`/${ImageType[req.params.imageType]}/${req.params.imageName}`).download().then((a) => {
     res.writeHead(200, {
       'Content-Type': 'image/png',
       'Cache-Control': 'max-age=1209600, s-maxage=1209600'
