@@ -64,7 +64,7 @@ export default class AdminIndex extends Vue {
         await ref.putString(canvas.toDataURL().split(',')[1], 'base64', metadata)
         if (typeof this.articleId === 'string') {
           await this.$firestore.collection('articles').doc(this.articleId).update({
-            ogImageUrl: `/api/images/${fileName}`,
+            ogImageUrl: `/api/images/og/${fileName}`,
           })
         }
         alert('upload done.')
