@@ -1,6 +1,9 @@
 <template>
-  <section class="bg-white pt-5 px-4 w-sm md:max-w-4xl mx-auto lg:p-8">
-    <div id="article" class="bg-white">
+  <section class="bg-white px-4 w-sm md:max-w-4xl mx-auto lg:p-8">
+    <div id="article" class="bg-white pt-5">
+      <div>
+        <img class="lg:h-64 mx-auto" :src="article.ogImageUrl" :alt="article.title" />
+      </div>
       <h1 id="article-title" class="text-3xl font-medium font-semibold">
         {{ article.articleTitle }}
       </h1>

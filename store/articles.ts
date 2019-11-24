@@ -9,6 +9,7 @@ export interface Article {
   contentHtml: string
   createdAt: Date
   updatedAt: Date
+  publishedAt: Date
 }
 
 interface State {
